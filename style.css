@@ -22,8 +22,14 @@
 ========================================================= */
 :root {
     /* --- Color de marca (cambia con el tema) --- */
-    --bg-color: #AAB12D;                 /* Lima, tomado del fondo de la ilustración original */
-    --nav-bg: rgba(170, 177, 45, 0.92);  /* Mismo color con transparencia para el header "cristal" */
+    /* Lima oscuro, tomado del fondo de la ilustración original */
+    /*--bg-color: #AAB12D;*/
+    /* Mismo color oscuro con transparencia para el header "cristal" */
+    /*--nav-bg: rgba(170, 177, 45, 0.92);*/
+
+    --bg-color: #B5C51A; /*Lima vibrante*/
+    --nav-bg: rgba(181, 197, 26, 0.92);
+    /* Deja las demás variables como están */
 
     /* --- Neutros (NO cambian con el tema) --- */
     --text-dark: #121212;                /* Casi negro */
@@ -41,8 +47,10 @@
 }
 
 :root[data-theme="orange"] {
-    --bg-color: #f65a00;                 /* Naranja vibrante */
+    --bg-color: #f65a00;                 /* Naranja oscuro */
     --nav-bg: rgba(246, 90, 0, 0.92);
+    /*--bg-color: #FF6500;*/               /* Naranja vibrante */
+    /*--nav-bg: rgba(255, 101, 0, 0.92);*/
 }
 
 /* ---------------------------------------------------------
@@ -403,8 +411,8 @@ body {
    proporción real del video, que script.js escribe en --avatar-ratio al cargar los metadatos.
    Así da igual si usas el máster 16:9 o la versión recortada _lite: el personaje se ve igual de grande. */
 .cat-avatar {
-    --avatar-h: min(40vh, 400px);
-    --avatar-h: min(40svh, 400px);
+    --avatar-h: min(32vh, 320px);
+    --avatar-h: min(32svh, 320px);
     --avatar-ratio: 2 / 3; /* Valor inicial (video _lite 540×810) hasta que se lean los metadatos */
 
     position: absolute;
@@ -417,6 +425,39 @@ body {
     pointer-events: none;
 }
 
+/*
+.cat-avatar::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 1%;
+    width: 42%;
+    height: 4%;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    filter: blur(8px);
+    transform: translateX(-50%);
+}*/
+
+.cat-avatar::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    bottom: 1%;
+    width: 48%;
+    height: 5%;
+    border-radius: 50%;
+    background: radial-gradient(
+        ellipse,
+        rgba(0, 0, 0, 0.28) 0%,
+        rgba(0, 0, 0, 0.16) 45%,
+        transparent 75%
+    );
+    filter: blur(4px);
+    transform: translateX(-50%);
+}
+
 .cat-avatar__video {
     display: block;
     width: 100%;
@@ -424,6 +465,9 @@ body {
     object-fit: contain;
     opacity: 0;                         /* Aparece con fade cuando el primer cuadro está listo */
     transition: opacity 0.5s ease;
+    /*Para que la sombra aparezca detras del character*/
+    position: relative;
+    z-index: 1;
 }
 
 .cat-avatar.has-video .cat-avatar__video {
@@ -876,7 +920,7 @@ body {
     .typewriter-container {
         font-size: 3.5rem;
     }
-
+    /*--avatar-h: min(aca es para cambiar el tamanio avatar en desktop)*/
     .cat-avatar {
         --avatar-h: min(62vh, 560px);
         --avatar-h: min(62svh, 560px);
