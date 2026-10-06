@@ -1,7 +1,7 @@
 # pragz.io — Landing page
 
 ## Demo
-URL: https://jsckbe.github.io/portfolio-work_myself/
+URL: https://jsckbe.github.io/portfolio-work-myself/
 
 ## Archivos
 
