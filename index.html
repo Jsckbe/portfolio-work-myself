@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios de tecnología y desarrollo web pragmáticos para tu negocio.">
+    <meta name="theme-color" content="#AAB12D">
+    <title>pragz.io | Servicios TI pragmáticos</title>
+
+    <!--
+        Aplica el tema guardado ANTES del primer render para evitar el "parpadeo"
+        lima → naranja. Debe ir en el <head> y ser síncrono (por eso es inline).
+    -->
+    <script>
+        try {
+            if (localStorage.getItem('pragz-theme') === 'orange') {
+                document.documentElement.dataset.theme = 'orange';
+            }
+        } catch (error) { /* localStorage puede estar bloqueado: se usa el tema por defecto */ }
+    </script>
+
+    <!-- Tipografía del sitio, servida por Google Fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">pragz.io ✳︎</a>
+
+            <nav class="nav-links" id="nav-links" aria-label="Navegación principal">
+                <!-- --i se usa en CSS para escalonar la animación de entrada de cada enlace -->
+                <a href="#servicios" style="--i:0">Servicios</a>
+                <a href="#portafolio" style="--i:1">Portafolio</a>
+                <a href="#contacto" style="--i:2">Contactar</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar a modo oscuro">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                        </svg>
+                    </span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                            <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5z"></path>
+                        </svg>
+                    </span>
+                </button>
+
+                <button class="hamburger" id="menu-btn" type="button" aria-label="Abrir menú" aria-controls="nav-links" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <!--
+                Avatar con fondo transparente (VP9 + alfa).
+                · Escritorio: el mouse controla el currentTime (script.js).
+                · Móvil: ping-pong automático (adelante → reversa → pausa).
+                El video va sin <audio> y con `muted` + `playsinline` para permitir autoplay en iOS.
+            -->
+            <div id="cat-avatar" class="cat-avatar" aria-hidden="true">
+                <video id="cat-video" class="cat-avatar__video" muted playsinline preload="auto"
+                       disablepictureinpicture disableremoteplayback>
+                    <!-- Safari/iOS: si el alfa de VP9 no se ve, exporta un HEVC con alfa y descomenta esta línea (debe ir PRIMERA):
+                    <source src="./assets/video/beast-video-hero1_alpha.mov" type='video/mp4; codecs="hvc1"'> -->
+
+                    <!-- _lite: mismo video recortado al personaje, sin audio y con seeks ~35× más rápidos
+                         (imprescindible para el tracking del mouse y la reversa del ping-pong). -->
+                    <source src="./assets/video/beast-video-hero1_alpha_lite.webm" type="video/webm">
+                    <!-- Respaldo: el máster original (más pesado; los seeks son lentos) -->
+                    <source src="./assets/video/beast-video-hero1_alpha.webm" type="video/webm">
+                </video>
+            </div>
+
+            <div class="hero-content">
+                <p class="blurred-label">
+                    Hola, somos pragz.io<br>
+                    Tecnología que funciona para tu negocio.
+                </p>
+
+                <h1 id="typewriter-text" class="typewriter-container" aria-label="Webs que traen clientes, no solo visitas. ¿Qué construimos hoy?">
+                    <span id="cursor" class="cursor" aria-hidden="true">|</span>
+                </h1>
+
+                <div class="pill-container">
+                    <a href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer" class="pill-btn solid">Quiero mi web</a>
+                    <a href="#servicios" class="pill-btn outline">Ver servicios</a>
+                    <button id="copy-email" class="pill-btn outline" type="button">
+                        hello@pragz.io
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================  SERVICIOS  ===================== -->
+        <section id="servicios" class="section servicios">
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow">01 — Servicios</p>
+                    <h2>Nuestros Servicios</h2>
+                    <p class="section-lead">Lo que tu negocio necesita para vender en internet, sin piezas de más.</p>
+                </header>
+
+                <div class="cards-grid">
+                    <article class="card">
+                        <span class="card__index">01</span>
+                        <h3>Webs que convierten</h3>
+                        <p>Landing pages y sitios corporativos rápidos, claros y pensados para que el visitante te escriba o te compre.</p>
+                        <ul class="tag-list">
+                            <li>Diseño a medida</li>
+                            <li>SEO base</li>
+                            <li>Mobile first</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <span class="card__index">02</span>
+                        <h3>Tiendas y sistemas</h3>
+                        <p>Catálogos, pedidos, pagos y paneles internos que automatizan lo repetitivo y te devuelven tiempo.</p>
+                        <ul class="tag-list">
+                            <li>E-commerce</li>
+                            <li>Automatización</li>
+                            <li>Integraciones</li>
+                        </ul>
+                    </article>
+
+                    <article class="card">
+                        <span class="card__index">03</span>
+                        <h3>Soporte TI</h3>
+                        <p>Mantenimiento, hosting, correo y seguridad para que tu tecnología funcione y tú te dediques al negocio.</p>
+                        <ul class="tag-list">
+                            <li>Mantenimiento</li>
+                            <li>Hosting</li>
+                            <li>Respaldo</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================  PORTAFOLIO  ===================== -->
+        <section id="portafolio" class="section portafolio">
+            <div class="container">
+                <header class="section-head">
+                    <p class="eyebrow">02 — Portafolio</p>
+                    <h2>Proyectos que hablan por nosotros</h2>
+                    <p class="section-lead">Muy pronto: casos reales con resultados. Reemplaza cada placeholder por una captura y un enlace.</p>
+                </header>
+
+                <!-- Cada <a> es un placeholder. Para un proyecto real: añade <img> dentro de .work__media y un href. -->
+                <div class="works-grid">
+                    <a class="work" href="#portafolio">
+                        <div class="work__media" aria-hidden="true"><span>01</span></div>
+                        <p class="work__title">Proyecto 01 <small>Landing page</small></p>
+                    </a>
+                    <a class="work" href="#portafolio">
+                        <div class="work__media" aria-hidden="true"><span>02</span></div>
+                        <p class="work__title">Proyecto 02 <small>Tienda online</small></p>
+                    </a>
+                    <a class="work" href="#portafolio">
+                        <div class="work__media" aria-hidden="true"><span>03</span></div>
+                        <p class="work__title">Proyecto 03 <small>Sistema interno</small></p>
+                    </a>
+                    <a class="work" href="#portafolio">
+                        <div class="work__media" aria-hidden="true"><span>04</span></div>
+                        <p class="work__title">Proyecto 04 <small>Sitio corporativo</small></p>
+                    </a>
+                    <a class="work" href="#portafolio">
+                        <div class="work__media" aria-hidden="true"><span>05</span></div>
+                        <p class="work__title">Proyecto 05 <small>Landing page</small></p>
+                    </a>
+                    <a class="work" href="#portafolio">
+                        <div class="work__media" aria-hidden="true"><span>06</span></div>
+                        <p class="work__title">Proyecto 06 <small>Automatización</small></p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================  POR QUÉ NOSOTROS  ===================== -->
+        <section id="por-que-nosotros" class="section porque">
+            <div class="container porque__layout">
+                <header class="section-head porque__head">
+                    <p class="eyebrow">03 — Por qué nosotros</p>
+                    <h2>Tu web no es un adorno. Es tu mejor vendedor.</h2>
+                </header>
+
+                <div class="porque__body">
+                    <p class="porque__lead">
+                        Hay quien te entrega una página bonita y desaparece. Nosotros construimos webs
+                        para que alguien te escriba, te llame o te compre, y nos quedamos para que
+                        siga funcionando.
+                    </p>
+
+                    <ol class="reasons">
+                        <li>
+                            <h3>Pragmatismo, no humo</h3>
+                            <p>Lenguaje claro, precios claros y solo lo que tu negocio realmente necesita.</p>
+                        </li>
+                        <li>
+                            <h3>Hecho para convertir</h3>
+                            <p>Cada sección tiene un objetivo: que el visitante dé el siguiente paso.</p>
+                        </li>
+                        <li>
+                            <h3>Trato directo</h3>
+                            <p>Hablas con quien construye tu proyecto, sin intermediarios ni tecnicismos.</p>
+                        </li>
+                    </ol>
+
+                    <a href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer" class="pill-btn solid">Hablemos de tu proyecto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Destino del enlace "Contactar" del menú -->
+    <footer id="contacto" class="site-footer">
+        <div class="container site-footer__inner">
+            <p class="site-footer__title">¿Listo para que tu web trabaje por ti?</p>
+            <div class="pill-container pill-container--static">
+                <a href="https://wa.me/51999999999" target="_blank" rel="noopener noreferrer" class="pill-btn solid">Escríbenos por WhatsApp</a>
+                <a href="mailto:hello@pragz.io" class="pill-btn outline">hello@pragz.io</a>
+            </div>
+            <p class="site-footer__legal">© 2026 pragz.io — Tecnología que funciona.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
