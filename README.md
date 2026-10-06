@@ -2,7 +2,14 @@
 
 ## Demo
 URL: https://jsckbe.github.io/portfolio-work-myself/
+---
 
+<hr>
+
+![](assets/README_landing_page_mobile1.jpg)
+<hr>
+
+## Notas propias (ignore):
 ## Archivos
 
 - `index.html`, `style.css`, `script.js`: sitio completo (HTML, CSS y JS puros, sin frameworks).
@@ -30,11 +37,11 @@ ffmpeg -c:v libvpx-vp9 -i assets/video/beast-video-hero1_alpha.webm \
 
 (`-c:v libvpx-vp9` antes de `-i` es necesario para que ffmpeg lea el canal alfa.)
 
-### Safari / iOS
-El soporte del alfa de VP9 en WebM puede variar en Safari. Verifica en un iPhone real; si el fondo no es transparente, exporta un HEVC con alfa (`.mov`) y descomenta la primera `<source>` en `index.html`.
+### iOS
+Verificar en un iPhone real; si el fondo no es transparente, exportar un HEVC con alfa (`.mov`) y descomenta la primera `<source>` en `index.html`.
 
 ## Tema
-El botón sol/luna alterna entre lima (`#AAB12D`) y naranja (`#f65a00`) cambiando `data-theme` en `<html>`. La elección se guarda en `localStorage`. Las sugerencias de contraste y de fondo general están como comentarios al inicio de `style.css`.
+El botón sol/luna alterna entre lima (`#AAB12D`) y naranja (`#f65a00`) cambiando `data-theme` en `<html>`. La elección se guarda en `localStorage`.
 
 ## Tecnologías
 - HTML5
